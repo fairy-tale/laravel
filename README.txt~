@@ -1,0 +1,12 @@
+HW2
+
+implement all the basic functions on piazza(The new requirement)
+
+Some assumptions:
+1.There are only two tables(user, pokemon) in my database. There is no profile table. The relationship between pokemon and user is one-to-many relationship.
+2. There are 8 columns in user table:
+	'name', 'email', 'password', 'isAdmin',	'pokemon_id'(foreign key), 
+	'hometown','password', 'remember_token'
+3.For the new user who registers using the register page, the default hometown = "USC", default pokemon_id = "1" (refer to the first pokemon in the pokemon table).
+4.For a guest(someone who doesn't log in), the upper left corner is a 'laravel' item which can
+

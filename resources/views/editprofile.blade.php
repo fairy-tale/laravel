@@ -1,0 +1,84 @@
+@extends('layouts.app')
+
+@section('content')
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">Edit Profile</div>
+                <div class="panel-body">
+
+                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/edit-profile') }}">
+                          {!! csrf_field() !!}
+                        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+                            <label class="col-md-4 control-label">Name</label>
+
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="name" value="{{ $errors->has('name') ? '' : $user->name }}" >
+
+                                @if ($errors->has('name'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('name') }}</strong>
+                                    </span>
+                                @endif
+
+                              
+                            </div>
+                           
+                           
+                        </div>
+
+                           <div class="form-group">
+                            <label class="col-md-4 control-label">Email</label>
+
+                             <div class="col-md-6">
+                                <input type="email" disabled class="form-control" name="email" value="{{ $user->email }}" >
+
+                              
+                            </div>
+                           </div>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Hometown</label>
+
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="hometown" value="{{ $errors->has('hometown') ? '' : $user->hometown }}" >
+
+                                @if ($errors->has('hometown'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('hometown') }}</strong>
+                                    </span>
+                                @endif                         
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Pokemon</label>
+			<div class="col-md-6">
+			<select class="form-control m-bot10" name="pokemon_id">
+    				@if ($pokemons->count())
+        				@foreach($pokemons as $pokemon)
+            				<option value="{{ $pokemon->id }}" {{$user->pokemon->id === $pokemon->id ? 'selected="selected"' : '' }}>{{ $pokemon->name }}</option>    
+					@endforeach
+    				@endif
+
+			</select>
+			</div>                 
+                        </div>
+
+                           <div class="form-group" style = "margin-right:-800px">
+                            <div class="col-md-6 col-md-offset-4">
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fa fa-btn fa-user"></i>Edit
+                                </button>
+                            </div>
+                        </div>
+
+                    </form>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection
